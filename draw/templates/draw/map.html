@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>P4 Drawing</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <style type="text/css">
+      body {
+        background-color: #F0F2EF;
+      }
+      .containter {
+        position: relative;
+      }
+      img {
+        width: 100%;
+        border: 1px solid black;
+        margin: 20px auto;
+        display: block;
+        z-index: -1;
+      }
+      
+      i {
+        position: absolute;
+        z-index: 1;
+        font-size: 20pt;
+        color: red;
+        opacity: 0.70;
+      }
+      
+      #london {
+        top: 23.5%;
+        left: 30.625%;
+      }
+      #paris {
+        top: 66%;
+        left: 39.07%;
+      }
+      #milan {
+        top: 117.5%;
+        left: 62.4%;
+      }      
+    </style>
+
+</head>
+<body>
+  <div class="container">
+      <img src="{% static 'images/map.png' %}">
+      <i class="fas fa-map-marker" id="london"></i>
+      <i class="fas fa-map-marker" id="paris"></i>
+      <i class="fas fa-map-marker" id="milan"></i>
+  </div>
+</body>
+<script>
+
+    // setting up the canvas and one paper tool
+    var canvas = document.getElementById('myCanvas');
+    paper.setup(canvas);
+    var tool = new paper.Tool();
+
+    // getting the URL (you may want to use for Exercise 3)
+    var url = window.location.href;
+
+    // var socket = new WebSocket(
+    //     'ws://your url here:8765/');
+
+
+</script>
+</html>
