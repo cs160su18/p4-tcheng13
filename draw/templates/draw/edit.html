@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>P4 Drawing</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'draw/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'draw/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'draw/vendor/paper/paper-full.min.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <style type="text/css">
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+      
+      form {
+        width: 80%;
+        margin: auto; 
+        padding: 5%;
+        background-color: white;
+      }
+      
+      h2 {
+        margin: 0;
+        font-size: 28pt;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin-bottom: 3%;
+      }
+      
+      h1 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 60pt;
+        color: #587792;
+        padding-bottom: 5%;
+        border-bottom: 10px solid #587792;
+        width: 36%;
+        margin: auto;
+      }
+      #head {
+        padding: 15% 10% 15%;
+      }
+      input {
+        font-size: 35pt;
+        width: 80%;
+        border: 1.5px solid black;
+        margin-bottom: 13%;
+      }
+      button {
+        background-color: white;
+        border: 1.5px solid black;
+        font-size: 35pt;
+        width: 84px;
+      }
+      #create {
+        width: 90.5%;
+        margin-bottom: 13%;
+      }
+      
+      select {
+        background-color: white;
+        font-size: 35pt;
+        width: 100%;
+      }
+      
+      #from {
+        width: 45%;
+        margin: 0;
+        display: inline-block;
+      }
+      #to {
+        width: 45%;
+        margin: 0;
+        display: inline-block;
+      }
+      
+      h4 {
+        font-size: 25pt;
+      }
+      
+    </style>
+
+</head>
+<body>
+  <div id="head">
+      <h1>Route 1</h1>
+  </div>
+  <form>
+    <h2>Add Location</h2>
+    <input type="text">
+    <button id="add"><i class="fas fa-plus"></i></button><br>
+    <h2>
+      Add Route
+    </h2>
+    <div id="from">
+    <h4>From:</h4>
+    <select>
+     <option>Paris</option>
+     <option>London</option>
+     <option>Milan</option>
+    </select>      
+    </div>
+    <div id="to">
+    <h4>To:</h4>
+    <select>
+     <option>London</option>
+     <option>Milan</option>
+    </select>      
+    </div>
+    <button id="create">Create Route</button>
+  </form>
+</body>
+<script>
+    // getting the URL (you may want to use for Exercise 3)
+    var url = window.location.href;
+
+    var socket = new WebSocket(
+        'ws://p4-tcheng13-tcheng13246410.codeanyapp.com:8765/');
+  
+    $( "#add" ).click(function() {
+      socket.send("add");
+      $(this).val('');
+    });
+    $( "#create" ).click(function() {
+      socket.send("create");
+    });
+    socket.onclose = function(e) {
+      console.error('Chat socket closed unexpectedly');
+    };
+
+
+</script>
+</html>

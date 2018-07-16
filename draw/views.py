@@ -12,3 +12,6 @@ def room(request, room_name):
   
 def map(request):
     return render(request, 'draw/map.html', {})
+  
+def edit(request):
+    return render(request, 'draw/edit.html', {})

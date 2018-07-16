@@ -66,7 +66,7 @@
       }     
       
       .off {
-        opacity: 0.0;
+        opacity: 0;
         border: none;
       }
     </style>
@@ -77,24 +77,24 @@
       <img src="{% static 'images/map.png' %}">
       <i class="fas fa-map-marker" id="london"></i>
       <i class="fas fa-map-marker" id="paris"></i>
-      <i class="fas fa-map-marker" id="milan" class="off"></i>
+      <i class="fas fa-map-marker off" id="milan"></i>
       <div id="routeOne"></div>
       <div id="routeTwo" class="off"></div>
   </div>
 </body>
 <script>
-
-    // setting up the canvas and one paper tool
-    var canvas = document.getElementById('myCanvas');
-    paper.setup(canvas);
-    var tool = new paper.Tool();
-
-    // getting the URL (you may want to use for Exercise 3)
-    var url = window.location.href;
-
-    // var socket = new WebSocket(
-    //     'ws://your url here:8765/');
-
-
+    var socket = new WebSocket(
+        'ws://p4-tcheng13-tcheng13246410.codeanyapp.com:8765/');
+  
+    socket.onmessage = function(receivedMessage) {
+	    if (receivedMessage.data == "add") {
+        $( "#milan" ).removeClass("off");
+      } else if (receivedMessage.data == "create") {
+        $( "#routeTwo" ).removeClass("off");
+      }
+    };
+    socket.onclose = function(e) {
+      console.error('Chat socket closed unexpectedly');
+    };
 </script>
 </html>
