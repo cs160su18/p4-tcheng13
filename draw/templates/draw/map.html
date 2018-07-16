@@ -12,14 +12,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
     <style type="text/css">
       body {
-        background-color: #F0F2EF;
+        background-color: #E3E5E3;
       }
       .containter {
         position: relative;
       }
       img {
         width: 100%;
-        border: 1px solid black;
+        border: 2px solid black;
         margin: 20px auto;
         display: block;
         z-index: -1;
@@ -33,18 +33,42 @@
         opacity: 0.70;
       }
       
+      div div {
+        position: absolute;
+        z-index: 2;
+        border-top: 1.5px dashed red;
+      }
+      
       #london {
-        top: 23.5%;
-        left: 30.625%;
+        top: 15.5%;
+        left: 30.87%;
       }
       #paris {
-        top: 66%;
-        left: 39.07%;
+        top: 44.1%;
+        left: 39.20%;
       }
       #milan {
-        top: 117.5%;
-        left: 62.4%;
-      }      
+        top: 78.7%;
+        left: 62.22%;
+      }     
+      
+      #routeOne {
+        top: 34.15%;
+        left: 28%;
+        width: 15.5%;
+        transform: rotate(59deg);
+      }
+      #routeTwo {
+        top: 65.7%;
+        left: 37.5%;
+        width: 27.9%;
+        transform: rotate(36.3deg);
+      }     
+      
+      .off {
+        opacity: 0.0;
+        border: none;
+      }
     </style>
 
 </head>
@@ -53,7 +77,9 @@
       <img src="{% static 'images/map.png' %}">
       <i class="fas fa-map-marker" id="london"></i>
       <i class="fas fa-map-marker" id="paris"></i>
-      <i class="fas fa-map-marker" id="milan"></i>
+      <i class="fas fa-map-marker" id="milan" class="off"></i>
+      <div id="routeOne"></div>
+      <div id="routeTwo" class="off"></div>
   </div>
 </body>
 <script>
